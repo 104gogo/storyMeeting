@@ -17,6 +17,7 @@ class ZssqController extends Controller {
   // 获取小说源列表
   async getBookSources() {
     const ctx = this.ctx;
+
     const result = await ctx.curl('http://api.zhuishushenqi.com/toc', {
       data: {
         view: ctx.query.view || 'summary',
@@ -46,7 +47,9 @@ class ZssqController extends Controller {
   // 获取小说章节内容
   async getChapter() {
     const ctx = this.ctx;
-    const result = await ctx.curl(`http://chapter2.zhuishushenqi.com/chapter/${ctx.params.link}`, {
+    const url = `http://chapter2.zhuishushenqi.com/chapter/${encodeURIComponent(ctx.params.link)}`;
+
+    const result = await ctx.curl(url, {
       data: {
         k: ctx.query.k || '2124b73d7e2e1945',
         t: ctx.query.t || '1468223717',
