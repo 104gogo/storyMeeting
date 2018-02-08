@@ -13,11 +13,10 @@ const SECRET_KEY = 'kRe5ZxAfHiPZ37hFHniHr1wbm31Bif40';
 const client = new AipSpeechClient(APP_ID, API_KEY, SECRET_KEY);
 
 class StoryService extends Service {
-  async baiduAiMp3() {
+  async baiduAiMp3(text) {
     // read config
-
     try {
-      const result = await client.text2audio('新建一个对象，建议只保存一个对象调用服务接口');
+      const result = await client.text2audio(text);
 
       if (result.data) {
         fs.writeFileSync('app/public/baiduAiMp3/test.mp3', result.data);
