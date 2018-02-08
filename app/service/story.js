@@ -19,8 +19,11 @@ class StoryService extends Service {
       const result = await client.text2audio(text);
 
       if (result.data) {
-        fs.writeFileSync('app/public/baiduAiMp3/test.mp3', result.data);
-        return 'http://localhost:7002/public/baiduAiMp3/test.mp3';
+        const name = `test${new Date().getTime()}`;
+        const mp3Path = `public/baiduAiMp3/${name}.mp3`;
+
+        fs.writeFileSync(`app/${mp3Path}`, result.data);
+        return `http://localhost:7002/${mp3Path}`;
       }
 
       // 服务发生错误
