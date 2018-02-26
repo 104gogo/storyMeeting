@@ -9,7 +9,9 @@ module.exports = appInfo => {
   // add your config here
   config.middleware = [];
 
-  config.host = 'http://172.16.77.253:7002';
+  config.host = 'http://120.79.72.243:7001'; // mp3测试地址
+  // config.host = 'http://172.16.77.253:7002'; // mp3开发地址
+
   config.zssqApiHost = 'http://api.zhuishushenqi.com';
   config.zssqChapterHost = 'http://chapter2.zhuishushenqi.com';
 
