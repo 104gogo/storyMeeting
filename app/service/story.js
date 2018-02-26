@@ -14,7 +14,8 @@ const client = new AipSpeechClient(APP_ID, API_KEY, SECRET_KEY);
 
 class StoryService extends Service {
   async baiduAiMp3(text) {
-    // read config
+    const { host } = this.ctx.app.config;
+
     try {
       const result = await client.text2audio(text);
 
@@ -23,7 +24,7 @@ class StoryService extends Service {
         const mp3Path = `public/baiduAiMp3/${name}.mp3`;
 
         fs.writeFileSync(`app/${mp3Path}`, result.data);
-        return `http://localhost:7002/${mp3Path}`;
+        return `${host}/${mp3Path}`;
       }
 
       // 服务发生错误

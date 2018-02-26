@@ -9,5 +9,9 @@ module.exports = appInfo => {
   // add your config here
   config.middleware = [];
 
+  config.host = 'http://172.16.77.253:7002';
+  config.zssqApiHost = 'http://api.zhuishushenqi.com';
+  config.zssqChapterHost = 'http://chapter2.zhuishushenqi.com';
+
   return config;
 };
